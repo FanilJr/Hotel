@@ -13,14 +13,16 @@ class ReservViewModel {
     var cellDataSource: Observable<Reserv> = Observable(nil)
     var dataSource: Reserv?
     var title: String
+    var titleForCell: String
     var showFinish: (() -> Void)?
     
     enum Action {
         case showLast
     }
     
-    init(title: String) {
+    init(title: String, titleForCell: String) {
         self.title = title
+        self.titleForCell = titleForCell
     }
     
     func push(_ action: Action) {

@@ -21,7 +21,7 @@ enum TypeViewController {
         case .room(viewModel: let viewModel):
             return RoomInfoViewController(roomViewModel: viewModel)
         case .reserv(viewModel: let viewModel):
-            return ReservationViewController(reservViewModel: viewModel, titleForCell: "")
+            return ReservationViewController(reservViewModel: viewModel)
         case .finish(vieModel: let viewModel):
             return FinishViewController(finishViewModel: viewModel)
         }

@@ -39,7 +39,7 @@ class ReservationTouristViewCell: UITableViewCell {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        stack.layoutMargins = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         stack.isLayoutMarginsRelativeArrangement = true
         stack.spacing = 10
         stack.clipsToBounds = true

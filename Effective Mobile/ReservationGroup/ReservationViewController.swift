@@ -10,12 +10,13 @@ import UIKit
 class ReservationViewController: UIViewController {
 
     var reserv: Reserv?
-    var titleForCell: String
+    var titleForCell: String?
     let reservViewModel: ReservViewModel
     var footerView = ReservationFooterView()
-    var toogleTourist: Bool = false
+    var toogleTourist: Bool = true
     var users = ["Первый турист"]
     var index: Int?
+    var section: Int?
     
     private let activityIndicator: UIActivityIndicatorView = {
         let activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
@@ -55,9 +56,9 @@ class ReservationViewController: UIViewController {
         self.title = reservViewModel.title
     }
     
-    init(reservViewModel: ReservViewModel, titleForCell: String) {
+    init(reservViewModel: ReservViewModel) {
         self.reservViewModel = reservViewModel
-        self.titleForCell = titleForCell
+        self.titleForCell = reservViewModel.titleForCell
         super.init(nibName: nil, bundle: nil)
         self.title = reservViewModel.title
         bindViewModel()
@@ -126,14 +127,14 @@ extension ReservationViewController: UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReservationInfoViewCell", for: indexPath) as! ReservationInfoViewCell
             if let reserv = reserv {
-                cell.setupCell(reserv: reserv, title: titleForCell)
+                cell.setupCell(reserv: reserv, title: titleForCell ?? "")
             }
             cell.selectionStyle = .none
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReservationInfoReservTableViewCell", for: indexPath) as! ReservationInfoReservTableViewCell
             if let reserv = reserv {
-                cell.setupCell(reserv: reserv, title: titleForCell)
+                cell.setupCell(reserv: reserv, title: titleForCell ?? "")
             }
             cell.selectionStyle = .none
             return cell
@@ -147,7 +148,7 @@ extension ReservationViewController: UITableViewDataSource {
             cell.touristLabel.text = "\(users[indexPath.row])"
             cell.delegate = self
             cell.sectionIndex = indexPath.section
-            self.index = indexPath.section
+            self.section = indexPath.section
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReservationAppendTouristViewCell", for: indexPath) as! ReservationAppendTouristViewCell
@@ -169,14 +170,11 @@ extension ReservationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 3:
-            if indexPath.row == 0 && toogleTourist {
-                return 80
-            } else if indexPath.row == 1 && toogleTourist{
-                return 80
-            } else if indexPath.row == 2 && toogleTourist{
+            if  toogleTourist {
+                return UITableView.automaticDimension
+            } else {
                 return 80
             }
-            return UITableView.automaticDimension
         default:
             return UITableView.automaticDimension
         }
@@ -210,6 +208,7 @@ extension ReservationViewController: ReservationTouristProtocol {
 
 extension ReservationViewController: ReservationAppendProtocol {
     func apendUser() {
+        
         var user: String?
         
         switch users.count {
@@ -227,8 +226,9 @@ extension ReservationViewController: ReservationAppendProtocol {
             user = "Ещё турист"
         }
         users.append(user ?? "")
-        guard let index else { return }
-        tableView.reloadSections([index], with: .automatic)
+        guard let section else { return }
+        tableView.reloadSections([section], with: .automatic)
+        tableView.reloadData()
     }
 }
 

@@ -90,12 +90,6 @@ class FinishViewController: UIViewController {
     
     @objc func tapButton() {
         finishViewModel.push(.start)
-//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//           let window = windowScene.windows.first {
-//            let viewModel = HotelViewModel(title: "Отель")
-//            window.rootViewController = UINavigationController(rootViewController: HotelViewController(hotelViewModel: viewModel))
-//            window.makeKeyAndVisible()
-//        }
     }
     
     func layout() {

@@ -32,6 +32,10 @@ class ReservationCoordinatorFlow: ReservationCoorinatorFlowProtocol {
 }
 
 final class ReservationCoordinator: Coordinator {
+    func start() {
+        print("start")
+    }
+    
     private let navigationController: UINavigationController
     private let viewControllerFactory: ViewControllersFactoryProtocol
     private let reservationCoordinatorFlow: ReservationCoordinatorFlow
@@ -42,8 +46,8 @@ final class ReservationCoordinator: Coordinator {
         self.reservationCoordinatorFlow = ReservationCoordinatorFlow(navigationController: navigationController, viewControllerFactory: viewControllerFactory)
     }
     
-    func start() {
-        let viewModel = ReservViewModel(title: "Бронирование")
+    func start(title: String) {
+        let viewModel = ReservViewModel(title: "Бронирование", titleForCell: title)
         viewModel.showFinish = reservationCoordinatorFlow.showFinishViewController
         let viewcontroller = viewControllerFactory.viewController(for: .reserv(viewModel: viewModel))
         navigationController.pushViewController(viewcontroller, animated: true)

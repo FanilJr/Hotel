@@ -27,7 +27,7 @@ class RoomCoordinatorFlow: RoomCoordinatorFlowProtocol {
     
     func showReservationViewController() {
         let reservationCoordinator = ReservationCoordinator(navigationController: navigationController, viewControllerFactory: viewControllerFactory)
-        reservationCoordinator.start()
+        reservationCoordinator.start(title: "Steigenberger Makadi")
     }
 }
 

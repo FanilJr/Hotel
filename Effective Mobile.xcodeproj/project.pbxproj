@@ -122,6 +122,7 @@
 		844FAE8D2B4D6AA0009C7251 /* Effective Mobile */ = {
 			isa = PBXGroup;
 			children = (
+				845172C32B525FD00052AACD /* Coordinators */,
 				845D391E2B5046B200E122C9 /* ReservationGroup */,
 				845D39192B4FDF2B00E122C9 /* Observable */,
 				84B3E4332B4EEBDD008FBFEA /* ViewModels */,
@@ -135,13 +136,6 @@
 				844FAE972B4D6AA7009C7251 /* Assets.xcassets */,
 				844FAE992B4D6AA7009C7251 /* LaunchScreen.storyboard */,
 				844FAE9C2B4D6AA7009C7251 /* Info.plist */,
-				84EA99362B51765B00BF7817 /* ViewControllerFactory.swift */,
-				84EA99382B51784B00BF7817 /* Coordinator.swift */,
-				84EA993C2B5179C100BF7817 /* AppCoordinator.swift */,
-				84EA993A2B5178A000BF7817 /* HotelCoordinator.swift */,
-				845172B42B5227720052AACD /* RoomCoordinator.swift */,
-				845172B62B523C9E0052AACD /* ReservationCoordinator.swift */,
-				845172BF2B5252020052AACD /* FinishCoordinator.swift */,
 			);
 			path = "Effective Mobile";
 			sourceTree = "<group>";
@@ -164,6 +158,20 @@
 				845D39252B50DEE400E122C9 /* CustomHeader.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		845172C32B525FD00052AACD /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				84EA99362B51765B00BF7817 /* ViewControllerFactory.swift */,
+				84EA99382B51784B00BF7817 /* Coordinator.swift */,
+				84EA993C2B5179C100BF7817 /* AppCoordinator.swift */,
+				84EA993A2B5178A000BF7817 /* HotelCoordinator.swift */,
+				845172B42B5227720052AACD /* RoomCoordinator.swift */,
+				845172B62B523C9E0052AACD /* ReservationCoordinator.swift */,
+				845172BF2B5252020052AACD /* FinishCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		845D39192B4FDF2B00E122C9 /* Observable */ = {
