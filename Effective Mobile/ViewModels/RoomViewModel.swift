@@ -14,9 +14,21 @@ class RoomViewModel {
     var cellDataSource: Observable<Rooms> = Observable(nil)
     var dataSource: Rooms?
     var title: String
+    var showReservation: (() -> Void)?
+    
+    enum Action {
+        case showReservation
+    }
     
     init(title: String) {
         self.title = title
+    }
+    
+    func push(_ action: Action) {
+        switch action {
+        case .showReservation:
+            showReservation?()
+        }
     }
     
     func getRooms() {

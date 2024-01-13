@@ -13,9 +13,21 @@ class ReservViewModel {
     var cellDataSource: Observable<Reserv> = Observable(nil)
     var dataSource: Reserv?
     var title: String
+    var showFinish: (() -> Void)?
+    
+    enum Action {
+        case showLast
+    }
     
     init(title: String) {
         self.title = title
+    }
+    
+    func push(_ action: Action) {
+        switch action {
+        case .showLast:
+            showFinish?()
+        }
     }
     
     func getReservation() {

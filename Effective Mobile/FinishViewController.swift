@@ -9,6 +9,8 @@ import UIKit
 
 class FinishViewController: UIViewController {
 
+    let finishViewModel: FinishViewModel
+    
     var background: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -72,17 +74,28 @@ class FinishViewController: UIViewController {
         if let previousViewController = navigationController?.viewControllers.dropLast().last {
             previousViewController.title = ""
         }
-        title = "Заказ оплачен"
         layout()
     }
     
+    init(finishViewModel: FinishViewModel) {
+        self.finishViewModel = finishViewModel
+        super.init(nibName: nil, bundle: nil)
+        
+        self.title = finishViewModel.title
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @objc func tapButton() {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            let viewModel = HotelViewModel(title: "Отель")
-            window.rootViewController = UINavigationController(rootViewController: HotelViewController(hotelViewModel: viewModel))
-            window.makeKeyAndVisible()
-        }
+        finishViewModel.push(.start)
+//        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//           let window = windowScene.windows.first {
+//            let viewModel = HotelViewModel(title: "Отель")
+//            window.rootViewController = UINavigationController(rootViewController: HotelViewController(hotelViewModel: viewModel))
+//            window.makeKeyAndVisible()
+//        }
     }
     
     func layout() {

@@ -234,7 +234,6 @@ extension ReservationViewController: ReservationAppendProtocol {
 
 extension ReservationViewController: ReservationFooterProtocol {
     func getPayment() {
-        let finishVC = FinishViewController()
-        navigationController?.pushViewController(finishVC, animated: true)
+        reservViewModel.push(.showLast)
     }
 }

@@ -121,8 +121,6 @@ extension RoomInfoViewController: UITableViewDataSource {
 
 extension RoomInfoViewController: RoomTableProtocol {
     func goInBronirovanie() {
-        let reservViewModel = ReservViewModel(title: "Бронирование")
-        let reservationVC = ReservationViewController(reservViewModel: reservViewModel, titleForCell: self.title ?? "")
-        navigationController?.pushViewController(reservationVC, animated: true)
+        roomViewModel.push(.showReservation)
     }
 }

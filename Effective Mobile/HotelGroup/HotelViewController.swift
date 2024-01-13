@@ -43,7 +43,6 @@ class HotelViewController: UIViewController {
     init(hotelViewModel: HotelViewModel) {
         self.hotelViewModel = hotelViewModel
         super.init(nibName: nil, bundle: nil)
-        
         bindViewModel()
     }
     
@@ -153,9 +152,7 @@ extension HotelViewController: UITableViewDataSource {
 
 extension HotelViewController: HotelFooterProtocol {
     func openRoom() {
-        let roomViewModel = RoomViewModel(title: "Steigenberger Makadi")
-        let roomInfoVC = RoomInfoViewController(roomViewModel: roomViewModel)
-        navigationController?.pushViewController(roomInfoVC, animated: true)
+        hotelViewModel.push(.showRoomViewController)
     }
 }
 

@@ -14,9 +14,21 @@ class HotelViewModel {
     var cellDataSource: Observable<Hotel> = Observable(nil)
     var dataSource: Hotel?
     var title: String
+    var showRoom: (() -> Void)?
+    
+    enum Action {
+        case showRoomViewController
+    }
     
     init(title: String) {
         self.title = title
+    }
+    
+    func push(_ action: Action) {
+        switch action {
+        case .showRoomViewController:
+            showRoom?()
+        }
     }
     
     func getHotel() {
